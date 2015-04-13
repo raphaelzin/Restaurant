@@ -1,0 +1,15 @@
+<div id="container">
+<% @waiters.each do |w| %>
+	<%= w.name %>
+		<% if !is_admin(w) %>
+		 - Tables:
+			<% w.tables.each do |t| %>
+				<%= t.number %>/
+			<%end%>	
+		<%else%>
+			(Admin)
+		<%end%>
+	<br>
+<%end%>
+
+</div>

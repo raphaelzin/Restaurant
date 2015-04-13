@@ -18,4 +18,9 @@ class WaitersController < ApplicationController
   	@table = Table.new(params[:table_id])
   	redirect_to waiters_tables
   end
+
+  def employees
+  	@waiters = Waiter.all.order("id ASC")
+  end
+
 end

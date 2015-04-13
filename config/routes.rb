@@ -2,8 +2,9 @@ Rails.application.routes.draw do
 
   get 'waiters/tables'
 	get 'waiters/login'
+	get 'waiters/employees'
 	delete 'sign_out' => 'sessions#destroy'
-	
+
 	resources :tables do
 		post :finish_table, on: :member
 		post :toggle_request, on: :member
@@ -20,5 +21,5 @@ resources :categories do
 end
 
 root 'tables#welcome'
-
+get "*path" => redirect("/")
 end

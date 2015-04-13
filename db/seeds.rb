@@ -3,7 +3,7 @@ Category.destroy_all
 Client.destroy_all
 Table.destroy_all
 #init tables, categories and dishes for each restaurant
-admin = Waiter.create :name => "master", :password => "bolaAzul", :admin => true
+admin = Waiter.create :name => "Master", :password => "bolaAzul", :admin => true
 w1 = Waiter.create :name => "Joanna", :password => "abc"
 w2 = Waiter.create :name => "Carol", :password => "asd"
 

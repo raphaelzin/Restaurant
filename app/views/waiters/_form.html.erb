@@ -1,0 +1,10 @@
+<%= form_tag(waiter_path, method: :create) do %>
+
+  Name:
+  <%= text_field :session, :name %>
+  <br>
+  password:
+  <%= password_field :session, :password %>
+  <br>
+  <button type='submit'>Login</button>
+<% end %>

@@ -124,4 +124,13 @@ h1,h5,h3
 	{
 		font-size: 20px;
 	}
+	.products
+	{
+		padding-left: 0%;
+		width: 100%;
+	}
+	.product
+	{
+		margin-left: 1%;
+	}
 }

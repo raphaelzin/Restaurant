@@ -7,6 +7,9 @@ class TablesController < ApplicationController
 
 	def show
 		@table = Table.find(params[:id])
+		if current_client.present? && current_client.table != @table
+			redirect_to table_clients_path(current_table,current_client)
+		end
 		@client = Client.new
 	end
 
