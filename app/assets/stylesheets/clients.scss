@@ -1,0 +1,43 @@
+// Place all the styles related to the clients controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+body
+{
+	background-color:#875D9C;
+	font-family: 'Raleway', sans-serif;
+	font-weight:bold;
+	color:#ffffff;
+}
+
+#container
+{
+	background-color: #FFFFFF;
+	color: #000000;
+	padding: 15px;
+	border-radius: 6px;
+	margin: 2% auto auto auto;
+	width: 70%;
+	font-size: 18px;
+}
+
+h1
+{
+	margin-top: 0px;
+}
+
+#login
+{
+	color:black;
+	text-align:center;
+	width:150px;
+	height:80px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:20%;
+	background-color:#ffffff;
+	border-radius:4px;
+	border: 3px solid #DDDDDD;
+	padding:15px;
+}

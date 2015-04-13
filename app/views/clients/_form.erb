@@ -1,0 +1,12 @@
+<%= form_for([@table,@client]) do |f| %>
+  Enter your name:
+  <br><br>
+  <div class='field'>
+    
+    <%= f.text_field :name %>
+  </div>
+
+  <div class='field'>
+    <%= f.submit 'Enter' %>
+  </div>
+<% end %>

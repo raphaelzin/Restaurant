@@ -1,0 +1,28 @@
+<div id="container">
+
+	<h1>Hi <%= @client.name %>, good to have you here!</h1>
+	<br>
+	<h3>Feel free to see our <%= link_to 'Menu', categories_path(@client) %> </h3>
+	<h3>Back to your <%= link_to "Table", table_path(@client.table) %></h3>
+	<% if @client.table.requested %>
+		<h5>Waiter has been called</h5>
+	<%else%>
+	<h5><%=link_to "Call waiter", toggle_request_table_path(@client.table,table_id: @client.table), user: 2, method: :post %></h5>
+	<%end%>
+	<br><br>
+	<div id="order">
+		<h3>You've ordered:</h3>
+		<hr>
+		<% if @client.dishes.empty? %>
+			<h5>Aren't you hungry?</h5>
+		<%end%>
+		<% @client.dishes.each do |d| %>
+			<div class="product">
+				<%= number_with_precision(d.price, :precision =>2) %> - <%= d.title %>
+			<br>
+			</div>
+		<%end%>
+		<hr>
+		Total: <%= number_with_precision(@client.owe, :precision =>2) %>
+	</div>	
+</div>

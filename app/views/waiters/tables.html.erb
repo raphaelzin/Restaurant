@@ -1,0 +1,41 @@
+<% @tables.each do |t| %>
+
+<div id="table" class="table<%=t.id%>">
+	<% if  t.requested %>
+	<script>
+		$(".table<%=t.id%>").css("background-color","#F00");
+	</script>
+	<% end %>
+	- (<%=t.clients.count%>) <%= link_to "Table", table_path(t) %> 
+	<%= t.id %> (<%= t.waiter.name %>)
+	-
+	<br><br>
+	<% t.clients.each do |c| %>
+		<%= link_to c.name, table_client_path(t,c) %> 
+		(<%= number_with_precision(c.owe, :precision => 2) %>)
+		<%= link_to 'Delete',
+              table_client_path(t,c),
+              method: :delete, data: { confirm: 'Really?' } %>
+		<br>
+		<div style="padding-left:15px;">
+		<% c.dishes.each do |d| %>
+			<%= d.title %><br>
+		<%end%>
+		</div>
+	<% end %>
+	<% if t.clients.count != 0 %>
+	<br>
+	Total: <%= number_with_precision(t.owe, :precision => 2) %>
+	<br>
+	<br>
+	<%= link_to "toggle requested", toggle_request_table_path(t,table_id: t, user: 1), method: :post %>
+	<br>
+	<%= link_to "Finish table", finish_table_table_path(t.waiter,table_id: t.id), method: :post%>
+	<%else%>
+		Empty Table
+	<%end%>
+
+</div>
+
+<br>
+<%end%>

@@ -1,0 +1,127 @@
+body
+{
+	background-color:#875D9C;
+	font-family: 'Raleway', sans-serif;
+	font-weight:bold;
+	color:#fff;
+}
+#client
+{
+	margin: 25px auto 25px 90px;
+}
+#order
+{
+	width: 30%;
+	margin-left: 5%;
+}
+#table
+{
+	color:black;
+	width:200px;
+	height:auto;
+	margin-top:0;
+	background-color:#fff;
+	border-radius:4px;
+	border: 3px solid #DDD;
+	padding:15px;
+	margin:2px;
+}
+#welcome
+{
+	color:black;
+	text-align:center;
+	width:250px;
+	height:160px;
+	margin:15% auto 0% auto;
+	background-color:#fff;
+	border-radius:4px;
+	border: 3px solid #DDD;
+	padding:15px;
+}
+#login
+{
+	color:black;
+	text-align:center;
+	width:150px;
+	height:80px;
+	margin-left:auto;
+	margin-right:auto;	
+	background-color:#fff;
+	border-radius:4px;
+	border: 3px solid #DDD;
+	padding:15px;
+}
+
+a
+{
+	text-decoration: none;
+}
+
+a:visited 
+{
+    color: #00F;
+}
+
+#container
+{
+	background-color: #FFF;
+	color: #000;
+	padding: 15px;
+	border-radius: 6px;
+	margin: 2% auto auto auto;
+	width: 70%;
+	font-size: 18px;
+}
+h3
+{
+	text-align: center;
+}
+.product
+{
+	margin: 10px 0px 10px 35px;
+}
+.products
+{
+	padding-left:3%;
+	width: 60%;
+	margin: 0px auto 0px auto;
+	border-radius: 5px;
+	border: solid black 1px;
+}
+.category
+{
+	cursor: pointer;
+}
+h1,h5,h3
+{
+	text-align: center;
+	padding: 0;
+	margin:  0;
+}
+
+
+
+#clientList
+{
+	height:350px;
+	border-radius: 3px;
+	border: 2px solid #EEE;
+}
+@media only screen and (max-width: 480px)
+{
+	#container
+	{
+		font-size: 16px;
+		width: 90%;
+	}
+
+	#order
+	{
+		width: 90%;
+	}
+
+	#container h1
+	{
+		font-size: 20px;
+	}
+}

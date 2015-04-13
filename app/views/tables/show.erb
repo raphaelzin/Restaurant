@@ -1,0 +1,24 @@
+<div id="container">
+	<h1>Table <%= @table.number %></h1>
+	<h5>today your waiter will be <%=@table.waiter.name%></h5>
+	<br>
+	<% if current_client.present? %>
+		<h3><%= link_to "Go to your page", table_client_path(@table,current_client) %></h3>
+	<% end %>
+	<br>
+
+	<div id="clientList">
+	<% @table.clients.each do |c| %>
+		<div id="client">
+			<%=c.name%>
+		</div>
+	<%end%>
+		<% if not current_client.present? %>
+		<div id="login">
+		<%= render 'clients/form' %>
+		</div>
+	<% end %>
+	</div>
+
+	<br>
+</div>

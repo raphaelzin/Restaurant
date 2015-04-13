@@ -1,0 +1,10 @@
+<div id="container">
+	<h1><%= @category.name %></h1>
+	Dishes:<br><br>
+
+	<% @category.dishes.each do |d| %>
+		<%= link_to d.title,category_dish_path(@category,d) %> 
+		(<%= d.description %>)
+		<br><br>
+	<%end%>
+</div>
