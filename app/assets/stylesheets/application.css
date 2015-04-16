@@ -1,9 +1,20 @@
+/**= require bootstrap.min*/
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
 body
 {
 	background-color:#875D9C;
 	font-family: 'Raleway', sans-serif;
 	font-weight:bold;
 	color:#fff;
+}
+#toolbar
+{
+	background-color: white;
+	color:black;
+	padding: 5px;
+	margin-bottom: 10px;
 }
 #client
 {
@@ -16,6 +27,7 @@ body
 }
 #table
 {
+	vertical-align: top;
 	color:black;
 	width:200px;
 	height:auto;
@@ -23,8 +35,9 @@ body
 	background-color:#fff;
 	border-radius:4px;
 	border: 3px solid #DDD;
-	padding:15px;
+	padding:25px;
 	margin:2px;
+	display: inline-block;
 }
 #welcome
 {
@@ -103,7 +116,7 @@ h1,h5,h3
 
 #clientList
 {
-	height:350px;
+	height:50%;
 	border-radius: 3px;
 	border: 2px solid #EEE;
 }
@@ -132,5 +145,13 @@ h1,h5,h3
 	.product
 	{
 		margin-left: 1%;
+	}
+	#clientList
+	{
+		width: 100%;
+	}
+	#login
+	{
+		width: 80%;
 	}
 }

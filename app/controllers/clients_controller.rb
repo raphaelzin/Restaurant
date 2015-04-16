@@ -26,6 +26,7 @@ class ClientsController < ApplicationController
     @client = @table.clients.new(client_params)
     if @client.save
       session[:client_id] = @client.id
+      flash[:message] = "Welcome"
       redirect_to table_client_path(@client.table,@client)
     else
       render 'new'

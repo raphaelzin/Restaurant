@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require_tree .
 //= require jquery.turbolinks
+//= require bootstrap-sprockets
 $(document).ready(function() {
 	$("."+"products").hide(200);
     $(".category").click(function(event) {

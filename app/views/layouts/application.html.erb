@@ -17,9 +17,12 @@
 <% session[:waiter_id].inspect %>
 
 <% if current_waiter.present? %>
+<div id="toolbar">
 	Logged as <%= current_waiter.name %> - 
 	<%= link_to 'Sign out', sign_out_path, method: :delete %>
 	 / <%= link_to "Back to tables", waiters_tables_path %>
+	 <br>
+</div>
 <%end%>
 
 <%= yield %>
