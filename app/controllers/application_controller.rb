@@ -28,7 +28,11 @@ class ApplicationController < ActionController::Base
   end
 
   def is_admin(user)
+    if user.present?
       user.admin
+    else
+      false
+    end
   end
 
 end

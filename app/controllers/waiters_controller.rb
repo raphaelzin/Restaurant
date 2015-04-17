@@ -1,4 +1,26 @@
 class WaitersController < ApplicationController
+  def new
+    @waiter = Waiter.new
+  end
+
+  def create
+    @waiter = Waiter.new(waiter_params)
+
+    if @waiter.save
+      redirect_to waiters_employees_path, notice: 'Created!'
+    end
+  end
+
+  def destroy
+    @waiter = Waiter.find(params[:id])
+    if @waiter.admin
+      redirect_to :back
+    else
+      @waiter.destroy
+      redirect_to :back
+    end
+  end
+
   def tables
   	if !current_waiter.present?
   		redirect_to root_path
@@ -20,7 +42,16 @@ class WaitersController < ApplicationController
   end
 
   def employees
-  	@waiters = Waiter.all.order("id ASC")
+    @waiter = Waiter.new
+    if is_admin(current_waiter)
+      @waiters = Waiter.all.order("id ASC")
+    else  
+      redirect_to root_path
+    end
+  end
+
+   def waiter_params
+    params.require(:waiter).permit(:name, :password)
   end
 
 end

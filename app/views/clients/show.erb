@@ -2,7 +2,7 @@
 	<div id="alert">
 		<%= flash[:message]%>
 	</div>
-	<h1>Hi <%= @client.name %>, good to have you here!</h1>
+	<h1>Hi <%= @client.name %>, it's good to have you here!</h1>
 	<br>
 	<h3>Feel free to see our <%= link_to 'Menu', categories_path(@client) %> </h3>
 	<h3>Back to your <%= link_to "Table", table_path(@client.table) %></h3>

@@ -8,9 +8,10 @@ w1 = Waiter.create :name => "Joanna", :password => "abc"
 w2 = Waiter.create :name => "Carol", :password => "asd"
 
 
-w1.tables.create(:number =>1, :requested => false)
-w1.tables.create(:number =>2, :requested => false)
-w2.tables.create(:number =>3, :requested => false)
+w1.tables.create(:number =>1, :requested => false, :code => "one")
+w1.tables.create(:number =>2, :requested => false, :code => "two")
+w2.tables.create(:number =>3, :requested => false, :code => "three")
+w2.tables.create(:number =>4, :requested => false, :code => "four")
 
 breakfast = Category.create :name => "Breakfast", :description => "The first meal of the day is the most important"
 lunch = Category.create :name => "Lunch", :description => "The middle day meal"

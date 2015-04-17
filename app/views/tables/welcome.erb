@@ -1,12 +1,16 @@
 <div id="welcome">
-	<h3>Welcome to XXX</h3>
+	<h3>Welcome to<br> White Spot </h3>
+
 	<br>
 	<% if current_client.present? %>
 		<h3><%= link_to "Go to your page", table_client_path(current_client.table,current_client) %></h3>
 	<% else%>
 	Enter the Table code:
 	
-	<%= text_field_tag 'code' %>
+	<%= form_tag(tables_path, method: "redirect_to_table") do%>
+	  <%= text_field :table, :code %>
+	  <button type='submit'>Go to your table</button>
+	<% end %>
 	<%end%>
 	<br>
 </div>

@@ -6,8 +6,8 @@
 		$(".table<%=t.id%>").css("background-color","#F00");
 	</script>
 	<% end %>
-	- (<%=t.clients.count%>) <%= link_to "Table", table_path(t) %> 
-	<%= t.id %> (<%= t.waiter.name %>)
+	- (<%=t.clients.count%>) <%= link_to t.code, table_path(t) %> 
+	<%= t.id %> (<%= t.waiter.name %>) 
 	-
 	<br><br>
 	<% t.clients.each do |c| %>

@@ -1,6 +1,6 @@
 <div id="container">
 <% @waiters.each do |w| %>
-	<%= w.name %>
+	(<%= link_to 'X', waiter_path(w),method: :delete, data: { confirm: 'Are you sure you want to remove the employee?' }%>)<%= w.name %>
 		<% if !is_admin(w) %>
 		 - Tables:
 			<% w.tables.each do |t| %>
@@ -11,5 +11,8 @@
 		<%end%>
 	<br>
 <%end%>
-
+	<div id="addEmployee">
+		Add new Employee
+		<%= render  'add_waiter' %>
+	</div>
 </div>

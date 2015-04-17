@@ -112,6 +112,16 @@ h1,h5,h3
 	margin:  0;
 }
 
+#addEmployee
+{
+	font-size: 15px;
+	padding: 5px;
+	border: solid black 1px;
+	width: 50%;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
 
 
 #clientList

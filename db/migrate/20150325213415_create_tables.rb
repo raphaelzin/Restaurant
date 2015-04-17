@@ -5,7 +5,6 @@ class CreateTables < ActiveRecord::Migration
       t.string :code
 			t.references :waiter
 			t.boolean :requested
-
       t.timestamps null: false
     end
   end
