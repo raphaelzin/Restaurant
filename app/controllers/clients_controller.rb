@@ -19,6 +19,7 @@ class ClientsController < ApplicationController
     @dish = Dish.find(params[:dish_id])
     @client.dishes << @dish
     @client.save
+    flash[:success] = "Dish - wait for it -  Ordered!"
     redirect_to table_client_path(@client.table,@client)
   end
 
@@ -33,8 +34,10 @@ class ClientsController < ApplicationController
     end
   end
 
-  def select_client
-    session[:client_id] = params[:id]
+  def toggle_request
+    @client = Client.find(params[:table_id])
+    @client.done = !@client.done
+    @client.save
     redirect_to :back
   end
 

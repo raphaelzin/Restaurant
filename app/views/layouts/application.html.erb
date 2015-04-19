@@ -21,6 +21,9 @@
 	Logged as <%= current_waiter.name %> - 
 	<%= link_to 'Sign out', sign_out_path, method: :delete %>
 	 / <%= link_to "Back to tables", waiters_tables_path %>
+   <% if is_admin(current_waiter) %>
+      /<%= link_to 'Admin Page', waiters_employees_path%>
+   <% end %>
 	 <br>
 </div>
 <%end%>

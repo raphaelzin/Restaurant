@@ -1,7 +1,20 @@
 <div id="container">
-	<div id="alert">
-		<%= flash[:message]%>
+	
+	<% if flash[:success] %>
+	<div class="alert-success">
+		<%= flash[:success]%><br>
 	</div>
+	<%end%>
+	<% if flash[:error] %>
+		<div class="alert-error">
+		<%= flash[:error]%><br>
+	</div>
+	<%end%>
+	<script>
+		alertMessage();
+	</script>
+	
+	<script>alertMessage()</script>
 	<h1>Hi <%= @client.name %>, it's good to have you here!</h1>
 	<br>
 	<h3>Feel free to see our <%= link_to 'Menu', categories_path(@client) %> </h3>
@@ -9,9 +22,10 @@
 	<% if @client.table.requested %>
 		<h5>Waiter has been called</h5>
 	<%else%>
+	<br>
 	<h5><%=link_to "Call waiter", toggle_request_table_path(@client.table,table_id: @client.table), user: 2, method: :post %></h5>
 	<%end%>
-	<br><br>
+	<br>
 	<div id="order">
 		<h3>You've ordered:</h3>
 		<hr>
@@ -20,11 +34,16 @@
 		<%end%>
 		<% @client.dishes.each do |d| %>
 			<div class="product">
-				<%= number_with_precision(d.price, :precision =>2) %> - <%= d.title %>
+				<div class="left"><%= d.title %></div>
+
+				<div class="right">
+					<%= number_with_precision(d.price, :precision =>2) %>
+				</div>
 			<br>
 			</div>
 		<%end%>
 		<hr>
 		<h5>Total: <%= number_with_precision(@client.owe, :precision =>2) %></h5>
 	</div>	
+
 </div>

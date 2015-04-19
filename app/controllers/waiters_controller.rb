@@ -7,16 +7,19 @@ class WaitersController < ApplicationController
     @waiter = Waiter.new(waiter_params)
 
     if @waiter.save
-      redirect_to waiters_employees_path, notice: 'Created!'
+      flash[:success] = 'Employer added'
+      redirect_to waiters_employees_path
     end
   end
 
   def destroy
     @waiter = Waiter.find(params[:id])
     if @waiter.admin
+      flash[:error] = 'Admin cannot be removed'
       redirect_to :back
     else
       @waiter.destroy
+      flash[:success] = 'Employer removed'
       redirect_to :back
     end
   end

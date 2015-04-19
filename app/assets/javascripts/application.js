@@ -16,10 +16,21 @@
 //= require_tree .
 //= require jquery.turbolinks
 //= require bootstrap-sprockets
+
+function alertMessage()
+{
+	$( ".alert-error" ).hide();
+	$( ".alert-success" ).hide();
+  	$( ".alert-error" ).fadeIn(500).delay( 3000 ).fadeOut( 500 );
+  	$( ".alert-success" ).fadeIn(500).delay( 3000 ).fadeOut( 500 );
+}
+
 $(document).ready(function() {
 	$("."+"products").hide(200);
     $(".category").click(function(event) {
     	$("."+"products").hide(200);
         $("#"+event.target.id + "-products").show(200);
     });
+    
+    
 });
