@@ -28,7 +28,7 @@ class WaitersController < ApplicationController
   	if !current_waiter.present?
   		redirect_to root_path
   	end
-  	@tables = Table.all.order("id ASC")
+  	@tables = Table.all.order("number ASC")
   end
 
   def login
@@ -44,7 +44,10 @@ class WaitersController < ApplicationController
   	redirect_to waiters_tables
   end
 
-  def employees
+  def manage_employees
+    if (!current_waiter.admin)
+      redirect_to root_path
+    end
     @waiter = Waiter.new
 
     if is_admin(current_waiter)
@@ -55,10 +58,18 @@ class WaitersController < ApplicationController
   end
 
   def manage_tables
-    
+    if (!current_waiter.admin)
+      redirect_to root_path
+    end
     @waiters = Waiter.all
     @table = Table.new
     @tables = Table.all.order("id ASC")
+  end
+
+  def admin
+    if (!current_waiter.admin)
+      redirect_to root_path
+    end
   end
 
    def waiter_params

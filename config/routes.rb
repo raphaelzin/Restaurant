@@ -2,8 +2,9 @@ Rails.application.routes.draw do
 
   	get 'waiters/tables'
   	get 'waiters/manage_tables'
+	get 'waiters/manage_employees'
 	get 'waiters/login'
-	get 'waiters/employees'
+	get 'waiters/admin'
 	delete 'sign_out' => 'sessions#destroy'
 
 	resources :tables do

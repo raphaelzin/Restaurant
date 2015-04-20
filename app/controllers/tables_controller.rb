@@ -7,9 +7,8 @@ class TablesController < ApplicationController
 
 	def create
 		@table = Table.new(table_params)
-		@table.number = Table.count+1
 	    if @table.save
-	      flash[:success] = 'Table added'
+	      flash[:success] = 'Table successfully created!'
 	      redirect_to :back
 	    end
 	end
@@ -40,6 +39,13 @@ class TablesController < ApplicationController
   	@table.save
   	redirect_to waiters_tables_path
 	end	
+
+	def destroy
+		@table = Table.find(params[:id])
+		flash[:success] = 'Table successfully removed!'
+		@table.destroy
+		redirect_to :back
+	end
 
 	def catch_not_found
 	  yield

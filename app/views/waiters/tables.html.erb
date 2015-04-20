@@ -1,13 +1,13 @@
 <% @tables.each do |t| %>
-
+<% if (t.waiter == current_waiter || current_waiter.admin ) %>
 <div id="table" class="table<%=t.id%>">
 	<% if  t.requested %>
 	<script>
 		$(".table<%=t.id%>").css("background-color","#F00");
 	</script>
 	<% end %>
-	- (<%=t.clients.count%>) <%= link_to t.code, table_path(t) %> 
-	<%= t.id %> (<%= t.waiter.name %>) 
+	- (<%=t.clients.count%>) <%= link_to "table #{t.number}", table_path(t) %> 
+	<%=  %> (<%= t.code %>) 
 	-
 	<br><br>
 	<% t.clients.each do |c| %>
@@ -36,5 +36,5 @@
 	<%end%>
 
 </div>
-
+<%end%>
 <%end%>
