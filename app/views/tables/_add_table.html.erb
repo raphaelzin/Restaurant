@@ -1,0 +1,13 @@
+<%= form_for(@table) do |f| %>
+
+  <%= f.label :code %>
+  <br>
+  <%= f.text_field :code, required: true %>
+  <br>
+  <%= f.label :waiter, 'Who is in charge' %>
+  <br>
+  <%= f.collection_select :waiter_id, Waiter.all, :id, :name, include_blank: false  %>
+  <br>
+  
+  <%= f.submit 'Add Table', class: "button" %>
+<% end %>

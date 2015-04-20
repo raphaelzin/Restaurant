@@ -1,0 +1,11 @@
+<div id="container">
+	<% @tables.each do |t|%>
+		Table <%= t.number %> (id: <%= t.id %>)<br>
+		Code: <%= t.code %><br>
+		Waiter in charge: <%= t.waiter.name %><br>
+		<hr>
+	<% end %>
+	<br>
+	<h3>Add Table</h3>
+	<%= render 'tables/add_table'  %>
+</div>

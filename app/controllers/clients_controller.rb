@@ -1,7 +1,7 @@
 class ClientsController < ApplicationController
   around_filter :catch_not_found
   before_action :lookup_table
-  
+
 	def show
 		@client = Client.find(params[:id])
     if @client.id != session[:client_id]  && !current_waiter.present?
@@ -15,11 +15,11 @@ class ClientsController < ApplicationController
   end
 
   def add_dish
+    flash[:success] = "Dish - wait for it -  Ordered!"
     @client = Client.find(session[:client_id])
     @dish = Dish.find(params[:dish_id])
     @client.dishes << @dish
     @client.save
-    flash[:success] = "Dish - wait for it -  Ordered!"
     redirect_to table_client_path(@client.table,@client)
   end
 

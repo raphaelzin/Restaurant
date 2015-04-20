@@ -5,6 +5,15 @@ class TablesController < ApplicationController
 		#reset_session
 	end
 
+	def create
+		@table = Table.new(table_params)
+		@table.number = Table.count+1
+	    if @table.save
+	      flash[:success] = 'Table added'
+	      redirect_to :back
+	    end
+	end
+
 	def show
 		@table = Table.find(params[:id])
 		if !current_waiter.present? && current_client.present? && current_client.table != @table 
@@ -36,5 +45,9 @@ class TablesController < ApplicationController
 	  yield
 	  rescue ActiveRecord::RecordNotFound
 	  redirect_to root_url, :flash => { :error => "Record not found." }
+  end
+
+  def table_params
+    params.require(:table).permit(:code, :number, :waiter_id)
   end
 end

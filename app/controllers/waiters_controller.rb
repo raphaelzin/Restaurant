@@ -5,7 +5,7 @@ class WaitersController < ApplicationController
 
   def create
     @waiter = Waiter.new(waiter_params)
-
+    
     if @waiter.save
       flash[:success] = 'Employer added'
       redirect_to waiters_employees_path
@@ -46,11 +46,19 @@ class WaitersController < ApplicationController
 
   def employees
     @waiter = Waiter.new
+
     if is_admin(current_waiter)
       @waiters = Waiter.all.order("id ASC")
     else  
       redirect_to root_path
     end
+  end
+
+  def manage_tables
+    
+    @waiters = Waiter.all
+    @table = Table.new
+    @tables = Table.all.order("id ASC")
   end
 
    def waiter_params
