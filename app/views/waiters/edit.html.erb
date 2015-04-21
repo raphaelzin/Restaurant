@@ -1,14 +1,15 @@
-
+<div id="container">
 <%= form_for(@waiter) do |f| %>
 
   <%= f.label :name %>
   <br>
   <%= f.text_field :name, required: true %>
   <br>
-  <%= f.label :password, 'Enter new password' %>
+  <%= f.label :password, 'Edit password' %>
   <br>
   <%= f.password_field :password, required: true %>
   <br>
   <br>
-  <%= f.submit 'Add Employee!', class: "button" %>
+  <%= f.submit 'Edit Employee', class: "button" %>
 <% end %>
+</div>

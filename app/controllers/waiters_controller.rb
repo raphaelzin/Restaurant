@@ -8,7 +8,7 @@ class WaitersController < ApplicationController
     
     if @waiter.save
       flash[:success] = 'Employer added'
-      redirect_to waiters_employees_path
+      redirect_to waiters_manage_employees_path
     end
   end
 
@@ -64,6 +64,21 @@ class WaitersController < ApplicationController
     @waiters = Waiter.all
     @table = Table.new
     @tables = Table.all.order("id ASC")
+  end
+
+  def edit
+    @waiter = Waiter.find(params[:id])
+  end
+
+  def update
+    @waiter = Waiter.find(params[:id])
+    if @waiter.update_attributes(waiter_params)
+      @waiter.save
+      flash[:success] = "Employee successfully edited"
+      redirect_to waiters_manage_employees_path
+    else
+      render :edit
+    end
   end
 
   def admin

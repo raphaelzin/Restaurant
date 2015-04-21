@@ -1,5 +1,6 @@
 <div id="container">
 	<h3>Manage Employees</h3>
+	<br>
 	<% if flash[:success] %>
 	<div class="alert-success">
 		<%= flash[:success]%><br>
@@ -14,16 +15,26 @@
 		alertMessage();
 	</script>
 <% @waiters.each do |w| %>
-	(<%= link_to 'X', waiter_path(w),method: :delete, data: { confirm: 'Are you sure you want to remove the employee?' }%>)<%= w.name %>
-		<% if !is_admin(w) %>
-		 - Tables:
-			<% w.tables.each do |t| %>
-				<%= t.number %>/
-			<%end%>	
-		<%else%>
-			(Admin)
+		Name: <%= w.name %>
+		<% if is_admin(w) %>
+		 (Admin)
 		<%end%>
+		<div class="right"><%= link_to 'Edit Employee', edit_waiter_path(w) %></div><br>
+		<% if is_admin(w) %>
+			In charge of Restaurant
+		 <%else%>
+			<% if w.tables.count > 0 %>
+				In charge of <%=w.tables.count%> Tables 
+				(<%= w.tables.collect {|u| u.number}.join ', '  %>)
+			<%else%>
+				No tables assigned yet
+			<%end%>
+		<%end%>
+		
+		<div class="right">
+			<%= link_to 'Delete Employee', waiter_path(w),method: :delete, data: { confirm: 'Are you sure you want to remove the employee?' }%><br></div>
 	<br>
+	<hr>
 <%end%>
 	<div id="addEmployee">
 		Add new Employee

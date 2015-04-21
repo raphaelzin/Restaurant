@@ -1,0 +1,16 @@
+<div id="container">
+  <h3>Editing Table</h3>
+<%= form_for(@table_edit) do |f| %>
+  <%= f.label :number %>
+  <%= f.text_field :number, required: true %>
+  <br>
+  <%= f.label :code %>
+  <%= f.text_field :code, required: true %>
+  <br>
+  <%= f.label :waiter, 'Who is in charge' %>
+  <%= f.collection_select :waiter_id, Waiter.all, :id, :name, include_blank: false  %>
+  <br>
+  
+  <%= f.submit 'Save changes', class: "button" %>
+<% end %>
+</div>

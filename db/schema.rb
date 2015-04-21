@@ -26,11 +26,12 @@ ActiveRecord::Schema.define(version: 20150412033653) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "name"
-    t.boolean  "done"
+    t.boolean  "done",           default: false
+    t.string   "payment_method"
     t.integer  "howManyTime"
     t.integer  "table_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   add_index "clients", ["table_id"], name: "index_clients_on_table_id", using: :btree
@@ -69,15 +70,6 @@ ActiveRecord::Schema.define(version: 20150412033653) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
-  create_table "orders", force: :cascade do |t|
-    t.float    "total"
-    t.integer  "client_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "orders", ["client_id"], name: "index_orders_on_client_id", using: :btree
-
   create_table "tables", force: :cascade do |t|
     t.integer  "number"
     t.string   "code"
@@ -98,5 +90,4 @@ ActiveRecord::Schema.define(version: 20150412033653) do
 
   add_foreign_key "clients", "tables"
   add_foreign_key "dishes", "categories"
-  add_foreign_key "orders", "clients"
 end

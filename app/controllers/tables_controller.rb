@@ -21,6 +21,21 @@ class TablesController < ApplicationController
 		@client = Client.new
 	end
 
+	def edit
+		@table_edit = Table.find(params[:id])
+	end
+
+	def update
+		@table = Table.find(params[:id])
+	    if @table.update_attributes(table_params)
+	    	@table.save
+	    	flash[:success] = "Table successfully edited"
+	    	redirect_to waiters_manage_tables_path
+	    else
+	    	render :edit
+	    end
+	end
+
 	def redirect_to_table
 		@table = Table.find_by(code: params[:code])
 		redirect_to waiters_login_path
@@ -35,9 +50,9 @@ class TablesController < ApplicationController
 
 	def finish_table
 		@table = Table.find(params[:table_id])
-  	@table.clients = []
-  	@table.save
-  	redirect_to waiters_tables_path
+	  	@table.clients = []
+	  	@table.save
+	  	redirect_to waiters_tables_path
 	end	
 
 	def destroy

@@ -14,10 +14,24 @@
 		alertMessage();
 	</script>
 	<% @tables.each do |t|%>
-		(<%= link_to 'X', table_path(t),method: :delete, data: { confirm: 'Are you sure you want to remove the table?' }%>)
-		Table <%= t.number %> (id: <%= t.id %>)<br>
-		Code: <%= t.code %><br>
-		Waiter in charge: <%= t.waiter.name %><br>
+		
+		Table <%= t.number %> (id: <%= t.id %>)
+		<br>
+		Code: <%= t.code %>
+		<div class="right">
+		<%= link_to 'Edit table', edit_table_path(t) %>
+		</div>
+		<br>
+		<% if t.waiter.present? %>
+			Waiter in charge: <%= t.waiter.name %>
+			<%else%>
+			No one is in charge
+		<%end%>
+		<div class="right">
+		<%= link_to 'Delete table', table_path(t),method: :delete, data: { confirm: 'Are you sure you want to remove the table?' }%>
+		</div><br>
+
+		
 		<hr>
 	<% end %>
 	<br>
