@@ -49,7 +49,6 @@ class WaitersController < ApplicationController
       redirect_to root_path
     end
     @waiter = Waiter.new
-
     if is_admin(current_waiter)
       @waiters = Waiter.all.order("id ASC")
     else  
@@ -64,6 +63,16 @@ class WaitersController < ApplicationController
     @waiters = Waiter.all
     @table = Table.new
     @tables = Table.all.order("id ASC")
+  end
+
+  def manage_categories
+
+    if is_admin(current_waiter)
+      @categories = Category.all.order("id ASC")
+      @category = Category.new
+    else  
+      redirect_to root_path
+    end
   end
 
   def edit

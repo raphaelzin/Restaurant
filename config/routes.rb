@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
-  	get 'waiters/tables'
   	get 'waiters/manage_tables'
 	get 'waiters/manage_employees'
+	get 'waiters/manage_categories'
+
+	get 'waiters/tables'
 	get 'waiters/login'
 	get 'waiters/admin'
 	delete 'sign_out' => 'sessions#destroy'

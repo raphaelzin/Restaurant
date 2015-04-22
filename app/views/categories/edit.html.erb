@@ -1,0 +1,16 @@
+<div id="container">
+<%= form_for(@category) do |f| %>
+
+  <%= f.label :name %>
+  <br>
+  <%= f.text_field :name, required: true %>
+  <br>
+
+  <%= f.label :description, 'Enter a description' %>
+  <br>
+  <%= f.text_area :description, required: true %>
+  <br>
+  <br>
+  <%= f.submit 'Save changes', class: "button" %>
+<% end %>
+</div>

@@ -121,7 +121,7 @@ h1,h5,h3
 	margin:  0;
 }
 
-#addEmployee
+#add
 {
 	border-radius: 6px;
 	font-size: 12px;
@@ -209,6 +209,16 @@ a, a:visited{
     left:50%;
 
 }
+/*Tablet*/
+@media only screen and (max-width: 768px)
+{
+	#container
+	{
+		font-size: 16px;
+		width: 95%;
+	}
+}
+
 /*SMARTPHONE*/
 @media only screen and (max-width: 480px)
 {
@@ -223,7 +233,7 @@ a, a:visited{
 	#container
 	{
 		font-size: 16px;
-		width: 90%;
+		width: 95%;
 	}
 
 	#order

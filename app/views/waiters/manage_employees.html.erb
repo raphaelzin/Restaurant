@@ -19,24 +19,24 @@
 		<% if is_admin(w) %>
 		 (Admin)
 		<%end%>
-		<div class="right"><%= link_to 'Edit Employee', edit_waiter_path(w) %></div><br>
+		<div class="right"><%= link_to 'Edit', edit_waiter_path(w) %></div><br>
 		<% if is_admin(w) %>
 			In charge of Restaurant
 		 <%else%>
 			<% if w.tables.count > 0 %>
 				In charge of <%=w.tables.count%> Tables 
-				(<%= w.tables.collect {|u| u.number}.join ', '  %>)
+				(<%= w.tables.collect {|t| t.number}.join ', '  %>)
 			<%else%>
 				No tables assigned yet
 			<%end%>
 		<%end%>
 		
 		<div class="right">
-			<%= link_to 'Delete Employee', waiter_path(w),method: :delete, data: { confirm: 'Are you sure you want to remove the employee?' }%><br></div>
+			<%= link_to 'Delete', waiter_path(w),method: :delete, data: { confirm: 'Are you sure you want to remove the employee?' }%><br></div>
 	<br>
 	<hr>
 <%end%>
-	<div id="addEmployee">
+	<div id="add">
 		Add new Employee
 		<%= render  'add_waiter' %>
 	</div>
