@@ -1,0 +1,36 @@
+<div id="container">
+	<h3>Manage Dishes</h3>
+	<br>
+	<% if flash[:success] %>
+	<div class="alert-success">
+		<%= flash[:success]%><br>
+	</div>
+	<%end%>
+	<% if flash[:error] %>
+		<div class="alert-error">
+		<%= flash[:error]%><br>
+	</div>
+	<%end%>
+	<script>
+		alertMessage();
+	</script>
+
+	<% @dishes.each do |d| %>
+		Name: <%= d.title %> 
+		<div class="right"><%= link_to "Edit", edit_category_dish_path(d.category,d) %> </div>
+		<br>
+		Category: <%= d.category.name %>
+		<div class="right">
+		<%= link_to "Delete", category_dish_path(d.category,d), method: :delete, data: {confirm: 'Are you sure you want to delete this dish?'}
+		%>
+		</div>
+		<br>
+		Price: $<%= d.price %>
+		<br>
+		<hr>
+	<%end%>
+	<div id="add">
+		Add a Dish
+		<%= render 'dishes/add_dish' %>
+	</div>
+</div>

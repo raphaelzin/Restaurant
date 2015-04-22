@@ -75,6 +75,16 @@ class WaitersController < ApplicationController
     end
   end
 
+  def manage_dishes
+      if is_admin(current_waiter)
+      @dishes = Dish.all.order("id ASC")
+      @dish = Dish.new
+      @category = Category.find_by(id: 1)
+    else  
+      redirect_to root_path
+    end
+  end
+
   def edit
     @waiter = Waiter.find(params[:id])
   end

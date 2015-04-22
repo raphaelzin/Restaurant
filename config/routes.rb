@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   	get 'waiters/manage_tables'
 	get 'waiters/manage_employees'
 	get 'waiters/manage_categories'
+	get 'waiters/manage_dishes'
 
 	get 'waiters/tables'
 	get 'waiters/login'

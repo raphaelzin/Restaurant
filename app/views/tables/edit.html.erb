@@ -2,7 +2,7 @@
   <h3>Editing Table</h3>
 <%= form_for(@table_edit) do |f| %>
   <%= f.label :number %>
-  <%= f.text_field :number, required: true %>
+  <%= f.number_field :number, required: true %>
   <br>
   <%= f.label :code %>
   <%= f.text_field :code, required: true %>
