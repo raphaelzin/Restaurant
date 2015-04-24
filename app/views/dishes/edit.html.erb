@@ -16,6 +16,7 @@
   <%= f.number_field :price, required: true,:step => 'any' %>
   <br>
     <%= f.label :category, 'Category' %>
+    <br>
   <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: false  %>
   <br>
 

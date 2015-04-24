@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  
   protect_from_forgery with: :null_session
 
   helper_method :current_client, :current_table, :sign_in_waiter, :current_waiter, :is_admin
@@ -12,7 +13,12 @@ class ApplicationController < ActionController::Base
   end
 
   def current_table
-  	current_client.table
+    if session.key?(:table_id) || current_client.present?
+      Table.find(current_client.table)
+
+    else
+      nil
+    end
   end
 
   def current_waiter

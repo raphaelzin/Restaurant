@@ -15,19 +15,19 @@
 	</script>
 	
 	<script>alertMessage()</script>
-	<h1>Hi <%= @client.name %>, it's good to have you here!</h1>
+	<h3>Hi <%= @client.name %>, it's good to have you here!</h3>
 	<br>
-	<h3>Feel free to see our <%= link_to 'Menu', categories_path(@client) %> </h3>
-	<h3>Back to your <%= link_to "Table", table_path(@client.table) %></h3>
+	<h5>Go to <%= link_to 'Menu', categories_path(@client) %> </h5>
+	<!-- <h5>Back to your <%= link_to "Table", table_path(@client.table) %></h5> -->
 	<% if @client.table.requested %>
 		<h5>Waiter has been called</h5>
 	<%else%>
-	<br>
+	
 	<h5><%=link_to "Call waiter", toggle_request_table_path(@client.table,table_id: @client.table), user: 2, method: :post %></h5>
 	<%end%>
-	<br>
+
 	<div id="order">
-		<h3>You've ordered:</h3>
+		<h5>You've ordered:</h5>
 		<hr>
 		<% if @client.dishes.empty? %>
 			<h5>Aren't you hungry?</h5>
@@ -43,7 +43,8 @@
 			</div>
 		<%end%>
 		<hr>
-		<h5>Total: <%= number_with_precision(@client.owe, :precision =>2) %></h5>
-	</div>	
-
+		<h6 class='right' style="font-size:18px;">Total: <%= number_with_precision(@client.owe, :precision =>2) %></h6>
+	</div>
+	<br><br>
+	
 </div>

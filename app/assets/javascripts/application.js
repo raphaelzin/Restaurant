@@ -15,7 +15,9 @@
 //= require turbolinks
 //= require_tree .
 //= require jquery.turbolinks
-//= require bootstrap-sprockets
+//= require social-share-button
+
+
 
 function alertMessage()
 {
@@ -24,13 +26,30 @@ function alertMessage()
   	$( ".alert-error" ).fadeIn(500).delay( 3000 ).fadeOut( 500 );
   	$( ".alert-success" ).fadeIn(500).delay( 3000 ).fadeOut( 500 );
 }
-
 $(document).ready(function() {
+  var fontsize = 100;
+  $(".tables-content").hide(0);
+
 	$("."+"products").hide(200);
     $(".category").click(function(event) {
     	$("."+"products").hide(200);
         $("#"+event.target.id + "-products").show(200);
     });
-    
-    
+
+    $(".toggle-hide").click(function(event){
+      $("#"+event.target.id + "-content").toggle(200);
+    });
+
+    $(".bigger").click(function(){
+      // var fontSize = parseInt($("#container").css("font-size"));
+      fontsize = parseInt(fontsize);
+      fontsize = fontsize + 10 + "%";
+      $("#container").css({'font-size':fontsize});
+    });
+
+    $(".smaller").click(function(){
+      fontsize = parseInt(fontsize);
+      fontsize = fontsize - 10 + "%";
+      $("#container,#product").css({'font-size':fontsize});
+    });
 });

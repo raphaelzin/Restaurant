@@ -1,16 +1,18 @@
 <div id="welcome">
-	<h3>Welcome to<br> White Spot </h3>
-
-	<br>
+	<h5>Welcome to<br> </h5>
+	<img src="http://upload.wikimedia.org/wikipedia/en/thumb/3/37/White_Spot_Logo.svg/1280px-White_Spot_Logo.svg.png" style="width:180px;">
+	<br><br>
 	<% if current_client.present? %>
 		<h3><%= link_to "Go to your page", table_client_path(current_client.table,current_client) %></h3>
 	<% else%>
+	
 	Enter the Table code:
 	
-	<%= form_tag(tables_path, method: "redirect_to_table") do%>
-	  <%= text_field :table, :code %>
-	  <button type='submit'>Go to your table</button>
+	<%= form_for @table, :url => {:action => "create"} do |f|%>
+	  <%= f.text_field :code, required: true %>
+	  <br>
+	  <%= f.submit 'Go to your table' %>
 	<% end %>
 	<%end%>
-	<br>
+	
 </div>

@@ -28,6 +28,7 @@ class WaitersController < ApplicationController
   	if !current_waiter.present?
   		redirect_to root_path
   	end
+    session[:client_id] = nil
   	@tables = Table.all.order("number ASC")
   end
 
@@ -57,7 +58,7 @@ class WaitersController < ApplicationController
   end
 
   def manage_tables
-    if (!current_waiter.admin)
+    if !is_admin(current_waiter)
       redirect_to root_path
     end
     @waiters = Waiter.all

@@ -8,16 +8,23 @@
 	<br>
 
 	<div id="clientList">
-	<% @table.clients.each do |c| %>
-		<div id="client">
-			<%=c.name%>
-		</div>
-	<%end%>
 		<% if not current_client.present? %>
-		<div id="login">
-		<%= render 'clients/form' %>
-		</div>
-	<% end %>
+			<div id="login">
+			<%= render 'clients/form' %>
+			</div>
+		<% end %>
+	
+		<% if @table.clients.count < 1 %>
+			There is no one signed yet 
+		<%else%>
+			<ul>
+			<% @table.clients.each do |c| %>
+				<div id="client">
+					<li><%=c.name%></li>
+				</div>
+			<%end%>
+			</ul>
+		<%end%>
 	</div>
 
 	<br>

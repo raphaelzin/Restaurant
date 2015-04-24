@@ -1,14 +1,64 @@
-/**= require bootstrap.min*/
-@import "bootstrap-sprockets";
-@import "bootstrap";
+/*
+ *= require social-share-button
+ *= require normalize
+ *= require skeleton
+ */
+.social-share-button-facebook {
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	background: url("facebook_button.gif") no-repeat;
+	background-size: contain;
+}
+
+.social-share-button-twitter {
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	background: url("twitter_button.gif") no-repeat;
+	background-size: contain;
+}
+
+.social-share-button
+{
+
+	width: 100px;
+	text-align: center;
+	display: inline-block;
+	margin-bottom: -5px;
+	margin-left: -5px;
+	padding-left: -10px;
+}
+#accessibility
+{
+	cursor: pointer;
+	display: inline;
+	float:right;
+	margin-right: 10px;
+	font-weight: normal;
+}
+ul
+{
+	display: inline-block;
+	width: 50%;
+}
+form
+{
+	margin-bottom: 0px;
+}
 
 body
 {
-	background-color:#875D9C;
+	/*background-color:#875D9C;*/
+	background-color: black;
+	background-image: url('bg_bricks2.jpg');
+	background-repeat: no-repeat;
 	font-family: 'Raleway', sans-serif;
 	font-weight:bold;
-	color:#fff;
+	overflow: scroll;
+	color:#000;
 }
+
 #toolbar
 {
 	background-color: white;
@@ -16,16 +66,33 @@ body
 	padding: 5px;
 	margin-bottom: 10px;
 }
+
+#bottom_bar
+{
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	position: fixed;
+	width: 100%;
+	bottom: 0px;
+	background-color: white;
+	color:black;
+	padding-bottom: -2px;
+	margin-bottom: -6px;
+	padding-top: 3px;
+	margin-top: 10px;
+}
+
 #client
 {
-	margin: 25px auto 25px 90px;
+	margin: 0px 5px 5px 5px;
 }
 #order
 {
 	width: 30%;
 	margin-left: 5%;
 }
-#table
+
+#tables
 {
 	vertical-align: top;
 	color:black;
@@ -35,7 +102,7 @@ body
 	background-color:#fff;
 	border-radius:4px;
 	border: 3px solid #DDD;
-	padding:25px;
+	padding:25px 25px 25px 25px;
 	margin:2px;
 	display: inline-block;
 }
@@ -53,13 +120,11 @@ body
 }
 #login
 {
-	color:black;
 	text-align:center;
+	display: inline-block;
 	width:180px;
-	height:100px;
-	margin-left:auto;
-	margin-right:auto;	
-	background-color:#fff;
+	height:100%;
+	margin-left:0px;
 	border-radius:4px;
 	border: 3px solid #DDD;
 	padding:15px;
@@ -91,14 +156,11 @@ a:visited
 	color: #000;
 	padding: 15px;
 	border-radius: 6px;
-	margin: 2% auto auto auto;
+	margin: 2% auto 4% auto;
 	width: 70%;
 	font-size: 18px;
 }
-h3
-{
-	text-align: center;
-}
+
 .product
 {
 	margin: 10px 0px 10px 0px;
@@ -114,12 +176,21 @@ h3
 {
 	cursor: pointer;
 }
-h1,h5,h3
+h1,h5,h3,h6
 {
 	text-align: center;
 	padding: 0;
 	margin:  0;
 }
+
+.toggle-hide
+{
+	display: inline;
+	color: blue;
+	cursor: pointer;
+}
+
+
 
 #add
 {
@@ -127,7 +198,7 @@ h1,h5,h3
 	font-size: 12px;
 	padding: 5px;
 	border: solid black 1px;
-	width: 200px;
+	width: 280px;
 	margin-right: auto;
 	margin-left: auto;
 	text-align: center;
@@ -141,17 +212,8 @@ h1,h5,h3
 	border: 2px solid #EEE;
 }
 
-button, .button {
-  -webkit-border-radius: 5;
-  -moz-border-radius: 5;
-  border-radius: 5px;
-  color: #000000;
-  font-size: 12px;
-  background: #fff;
-  padding: 0px 20px 0px 20px;
-  border: solid #000000 1px;
-  text-decoration: none;
-}
+
+
 
 button:hover,.button:hover {
   background: #96c3eb;
@@ -167,7 +229,11 @@ button:hover,.button:hover {
 a, a:visited{
 	color:#337ab7;
 }
-
+hr
+{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
 .alert-error
 {
 	border-radius: 4px;
@@ -215,7 +281,11 @@ a, a:visited{
 	#container
 	{
 		font-size: 16px;
-		width: 95%;
+		width: 85%;
+	}
+	#order
+	{
+		width: 40%;
 	}
 }
 
@@ -230,10 +300,15 @@ a, a:visited{
 	{
 		font-size: 18px;
 	}
+	.alert-success, .alert-error
+	{
+		width: 80%;
+		margin-left:-40%;
+	}
 	#container
 	{
 		font-size: 16px;
-		width: 95%;
+		width: 90%;
 	}
 
 	#order
@@ -260,9 +335,9 @@ a, a:visited{
 	}
 	#login
 	{
-		width: 80%;
+		width: 90%;
 	}
-	#table
+	#tables
 	{
 		width: 80%;
 		display: block;

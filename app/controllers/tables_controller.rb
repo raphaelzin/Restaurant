@@ -2,7 +2,8 @@ class TablesController < ApplicationController
 	around_filter :catch_not_found
 
 	def welcome
-		#reset_session
+		@table = Table.find_by(id: 1)
+		
 	end
 
 	def create
@@ -15,8 +16,8 @@ class TablesController < ApplicationController
 
 	def show
 		@table = Table.find(params[:id])
-		if !current_waiter.present? && current_client.present? && current_client.table != @table 
-			redirect_to table_clients_path(current_table,current_client)
+		if !current_waiter.present? && current_table.present? &&current_table != @table 
+			redirect_to table_path(current_table)
 		end
 		@client = Client.new
 	end
@@ -37,8 +38,9 @@ class TablesController < ApplicationController
 	end
 
 	def redirect_to_table
-		@table = Table.find_by(code: params[:code])
-		redirect_to waiters_login_path
+		session[:table_id] = Table.find_by_sql(:code => params[:code]).id
+		@table = session[:table_id]
+		redirect_to table_path(@table)
 	end
 
 	def toggle_request
@@ -51,6 +53,7 @@ class TablesController < ApplicationController
 	def finish_table
 		@table = Table.find(params[:table_id])
 	  	@table.clients = []
+	  	@table.requested = false
 	  	@table.save
 	  	redirect_to waiters_tables_path
 	end	

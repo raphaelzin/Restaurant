@@ -1,10 +1,10 @@
 <%= form_tag(sessions_path, method: :create) do %>
 
   Name:<br>
-  <%= text_field :session, :name %>
+  <%= text_field :session, :name, required: true %>
   <br>
   password:<br>
-  <%= password_field :session, :password %>
+  <%= password_field :session, :password, required: true  %>
   <br><br>
   <button type='submit'>Login</button>
 <% end %>

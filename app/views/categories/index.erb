@@ -2,11 +2,11 @@
 	$("."+"products").hide();
 </script>
 <div id="container">
-<h1>Choose your pick!</h1>
-<h3><%= link_to 'Back home', table_client_path(current_table,current_client) %></h3><br>
+<h3>Choose your pick!</h3>
+<h5><%= link_to 'Back home', table_client_path(current_table,current_client) %></h5><br>
 <% @categories.each do |c| %>
-	<h3 class="category" id="<%= c.name %>">- <%= c.name %> -</h3> 
-	<h5>(<%= c.description %>)</h5><br>
+	<h5 class="category" id="<%= c.name %>">- <%= c.name %> -</h5> 
+	<h6>(<%= c.description %>)</h6><br>
 	<div id="<%= c.name %>-products" class="products">
 		<% c.dishes.each do |d| %>
 			<div class="product">
