@@ -18,7 +18,6 @@
 	<h3>Hi <%= @client.name %>, it's good to have you here!</h3>
 	<br>
 	<h5>Go to <%= link_to 'Menu', categories_path(@client) %> </h5>
-	<!-- <h5>Back to your <%= link_to "Table", table_path(@client.table) %></h5> -->
 	<% if @client.table.requested %>
 		<h5>Waiter has been called</h5>
 	<%else%>

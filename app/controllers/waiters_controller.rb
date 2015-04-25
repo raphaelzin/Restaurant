@@ -46,7 +46,7 @@ class WaitersController < ApplicationController
   end
 
   def manage_employees
-    if is_admin(current_waiter)
+    if !is_admin(current_waiter)
       redirect_to root_path
     end
     @waiter = Waiter.new

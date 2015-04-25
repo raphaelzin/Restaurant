@@ -6,7 +6,6 @@
   <br>
   <%= f.text_field :title, required: true %>
   <br>
-
   <%= f.label :description, 'Enter a description' %>
   <br>
   <%= f.text_area :description, required: true %>
@@ -14,12 +13,12 @@
   <%= f.label :price, "Enter the price",required: true %>
   <br>
   <%= f.number_field :price, required: true,:step => 'any' %>
-    <br>
+  <br>
   <%= f.label :pic, 'Category' %>
   <%= f.file_field :pic %>
   <br>
-    <%= f.label :category, 'Category' %>
-    <br>
+  <%= f.label :category, 'Category' %>
+  <br>
   <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: false  %>
   <br>
 

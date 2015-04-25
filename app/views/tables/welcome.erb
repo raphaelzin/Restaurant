@@ -19,9 +19,9 @@
 	<h5>Welcome to<br> </h5>
 	<img src="http://upload.wikimedia.org/wikipedia/en/thumb/3/37/White_Spot_Logo.svg/1280px-White_Spot_Logo.svg.png" style="width:180px;">
 	<br><br>
-	<% if current_client.present? %>
-		<h3><%= link_to "Go to your page", table_client_path(current_client.table,current_client) %></h3>
-	<% else%>
+	<% if current_client.present? || current_table.present? %>
+		<h5><%= link_to 'Go to your table!', table_path(current_table) %></h5>
+	<%else%>
 	
 	Enter the Table code:
 	

@@ -21,9 +21,6 @@
 	 <br>
 </div>
 <%end%>
-
-<%= session[:table_id].inspect %>
-
 <%= yield %>
 <% if !current_waiter.present? && current_client.present?%>
 <div id="bottom_bar" >

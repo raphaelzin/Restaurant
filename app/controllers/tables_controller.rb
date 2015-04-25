@@ -2,7 +2,6 @@ class TablesController < ApplicationController
 	around_filter :catch_not_found
 
 	def welcome
-		
 	end
 
 	def create
@@ -14,6 +13,10 @@ class TablesController < ApplicationController
 	end
 
 	def show
+		if !current_table.present?
+			redirect_to root_path
+		end
+
 		@table = Table.find(params[:id])
 		if !current_waiter.present? && current_table.present? && current_table != @table
 			redirect_to table_path(current_table)

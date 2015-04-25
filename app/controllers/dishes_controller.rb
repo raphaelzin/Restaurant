@@ -6,12 +6,10 @@ class DishesController < ApplicationController
 	end
 	
 	def create
-    @dish = @category.dishes.new(dish_params)
+    @dish = Dish.new(dish_params)
     if @dish.save
     	flash[:success] = "Dish successfully created"
       redirect_to waiters_manage_dishes_path
-    else
-      render 'new'
     end
   end
 

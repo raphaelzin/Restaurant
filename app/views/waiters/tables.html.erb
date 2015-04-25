@@ -15,7 +15,7 @@
 		(<%= number_with_precision(c.owe, :precision => 2) %>)
 		<%= link_to 'Delete',
               table_client_path(t,c),
-              method: :delete, data: { confirm: 'Really?' } %>
+              method: :delete, data: { confirm: 'Do you really want to delete this client?' } %>
 		<br>
 		<div style="padding-left:15px;">
 		<% c.dishes.each do |d| %>
