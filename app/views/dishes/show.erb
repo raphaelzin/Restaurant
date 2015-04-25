@@ -1,7 +1,8 @@
 <div id="container">
 	<h1><%= @dish.title %></h1>
+	<%= image_tag @dish.pic.url(:medium), :class => 'productPic' %>
 	<h4><%= @dish.description %></h4>
 	<%= @dish.price %>
 	<%= link_to "order", add_dish_table_client_path(current_table, current_client, dish_id: @dish.id), method: :post
-		%>
+	%>
 </div>

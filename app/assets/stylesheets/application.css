@@ -29,6 +29,10 @@
 	margin-left: -5px;
 	padding-left: -10px;
 }
+.productPic
+{
+	border-radius: 6px;
+}
 #accessibility
 {
 	cursor: pointer;
@@ -39,8 +43,9 @@
 }
 ul
 {
-	display: inline-block;
+	display: inline;
 	width: 50%;
+	height: 100px;
 }
 form
 {

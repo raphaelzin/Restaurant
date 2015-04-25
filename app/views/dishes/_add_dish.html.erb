@@ -13,10 +13,13 @@
   <br>
   <%= f.number_field :price, required: true,:step => 'any' %>
   <br>
+  <%= f.label :pic, 'Category' %>
+  <%= f.file_field :pic %>
+
 
   <%= f.label :category, 'Category' %>
   <br>
-  <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: false  %>
+  <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: false%>
   <br>
 
   <%= f.submit 'Add Dish!', class: "button" %>

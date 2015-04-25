@@ -13,9 +13,8 @@ class ApplicationController < ActionController::Base
   end
 
   def current_table
-    if session.key?(:table_id) || current_client.present?
-      Table.find(current_client.table)
-
+    if session.key?(:table_id)
+      Table.find(session[:table_id])
     else
       nil
     end

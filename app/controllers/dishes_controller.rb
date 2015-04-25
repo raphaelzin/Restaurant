@@ -32,10 +32,17 @@ class DishesController < ApplicationController
   end
 
 	def dish_params
-	  params.require(:dish).permit(:title,:description,:price,:howManyServe,:photo,:category_id)
+	  params.require(:dish).permit(:title,:description,:price,:howManyServe,:pic,:category_id)
 	end
 
 	def lookup_category
 	  @category = Category.find(params[:category_id])
 	end
+
+  def destroy
+    @dish = Dish.find(params[:id])
+    flash[:success] = 'Dish successfully removed!'
+    @dish.destroy
+    redirect_to :back
+  end
 end

@@ -22,10 +22,12 @@
 </div>
 <%end%>
 
+<%= session[:table_id].inspect %>
+
 <%= yield %>
 <% if !current_waiter.present? && current_client.present?%>
 <div id="bottom_bar" >
-  <%=  social_share_button_tag("Testing Share capability of Rails App", :url => "https://www.whitespot.ca/menu/bc",:popup => 'true')%>
+  <%=  social_share_button_tag("Having a good time :) ", :url => "https://www.whitespot.ca/menu/bc",:popup => 'true')%>
   <div id="accessibility">
     <div class="bigger" style="display:inline;font-size:28px;margin-right:5px;">+A</div>
     <div class="smaller" style="display:inline;font-size:22px;">-A</div>

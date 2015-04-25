@@ -1,4 +1,21 @@
 <div id="welcome">
+
+	<% if flash[:success] %>
+	<div class="alert-success">
+		<%= flash[:success]%><br>
+	</div>
+	<%end%>
+	<% if flash[:error] %>
+		<div class="alert-error">
+		<%= flash[:error]%><br>
+	</div>
+	<%end%>
+	<script>
+		alertMessage();
+	</script>
+	
+	<script>alertMessage()</script>
+
 	<h5>Welcome to<br> </h5>
 	<img src="http://upload.wikimedia.org/wikipedia/en/thumb/3/37/White_Spot_Logo.svg/1280px-White_Spot_Logo.svg.png" style="width:180px;">
 	<br><br>
@@ -8,11 +25,11 @@
 	
 	Enter the Table code:
 	
-	<%= form_for @table, :url => {:action => "create"} do |f|%>
-	  <%= f.text_field :code, required: true %>
-	  <br>
-	  <%= f.submit 'Go to your table' %>
-	<% end %>
+	<%=form_tag(tables_redirect_to_table_path) do %>
+        <%=text_field_tag :code%>
+        <%=submit_tag 'Go to table'%>
+	<%end%>
+	
 	<%end%>
 	
 </div>

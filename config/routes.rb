@@ -9,10 +9,10 @@ Rails.application.routes.draw do
 	get 'waiters/login'
 	get 'waiters/admin'
 
+	post 'tables/redirect_to_table' => 'tables#redirect_to_table'
 	delete 'sign_out' => 'sessions#destroy'
 
 	resources :tables do
-		
 		post :finish_table, on: :member
 		post :toggle_request, on: :member
 	  resources :clients do

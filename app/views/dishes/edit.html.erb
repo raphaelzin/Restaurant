@@ -14,6 +14,9 @@
   <%= f.label :price, "Enter the price",required: true %>
   <br>
   <%= f.number_field :price, required: true,:step => 'any' %>
+    <br>
+  <%= f.label :pic, 'Category' %>
+  <%= f.file_field :pic %>
   <br>
     <%= f.label :category, 'Category' %>
     <br>
