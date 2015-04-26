@@ -42,7 +42,25 @@
 			</div>
 		<%end%>
 		<hr>
-		<h6 class='right' style="font-size:18px;">Total: <%= number_with_precision(@client.owe, :precision =>2) %></h6>
+		<h6 class='right' style="font-size:18px;">Total: <%= number_with_precision(@client.owe, :precision =>2) %>
+		</h6>
+		<br>
+<h6>
+	<% if not @client.checking_out %>
+		<%= form_tag toggle_check_out_table_client_path do %>
+
+			<% hidden_field_tag :id, @client.id %>
+			
+			Credit <%= radio_button_tag(:payment_method, "Credit", true,:item_wrapper_class => 'inline',) %>
+
+			Cash <%= radio_button_tag(:payment_method, "Cash",:item_wrapper_class => 'inline',) %><br>
+			
+			<%= submit_tag 'Check out!', :class => 'button'%>
+		<%end%>
+		<%else%>
+		You are checking out
+	<%end%>
+		</h6>
 	</div>
 	<br><br>
 	

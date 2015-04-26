@@ -3,7 +3,13 @@ class ClientsController < ApplicationController
   before_action :lookup_table
 
 	def show
-		@client = Client.find(params[:id])
+    @client = Client.find(params[:id])
+
+    if current_waiter.present?
+      session[:client_id] = @client.id
+      session[:table_id] = @client.table.id
+    end
+		
     if @client.id != session[:client_id]  && !current_waiter.present?
       redirect_to root_path
     end
@@ -34,17 +40,19 @@ class ClientsController < ApplicationController
     end
   end
 
-  def toggle_request
-    @client = Client.find(params[:table_id])
-    @client.done = !@client.done
-    @client.save
-    redirect_to :back
-  end
-
   def destroy
     @client = Client.find(params[:id])
     @client.destroy
     redirect_to waiters_tables_path
+  end
+
+  def toggle_check_out
+    @client = Client.find(params[:id])
+    @client.payment_method = params[:payment_method]
+    @client.checking_out = !@client.checking_out
+    @client.save
+
+    redirect_to :back
   end
 
   def catch_not_found
@@ -62,6 +70,4 @@ class ClientsController < ApplicationController
   def lookup_table
     @table = Table.find(params[:table_id])
   end
-
-
 end

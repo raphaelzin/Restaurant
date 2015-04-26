@@ -11,7 +11,8 @@
 		<% c.dishes.each do |d| %>
 			<div class="product">
 				<div class="left">
-					<%= link_to d.title, category_dish_path(c,d) %>
+					<%= image_tag d.pic.url(:medium), :class => 'productPic', :id => 'circular'%>
+						<%= link_to d.title, category_dish_path(c,d) %>
 				</div>
 				<div class="right">
 					$<%=d.price%> - 

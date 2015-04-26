@@ -29,17 +29,17 @@ function alertMessage()
 $(document).ready(function() {
   var fontsize = 100;
   $(".tables-content").hide(0);
-
 	$("."+"products").hide(200);
+
     $(".category").click(function(event) {
-    	$("."+"products").hide(200);
-        $("#"+event.target.id + "-products").show(200);
+        $("#"+event.target.id + "-products").toggle(200);
     });
 
     $(".toggle-hide").click(function(event){
       $("#"+event.target.id + "-content").toggle(200);
     });
 
+    // ACCESSIBILITY //
     $(".bigger").click(function(){
       // var fontSize = parseInt($("#container").css("font-size"));
       fontsize = parseInt(fontsize);

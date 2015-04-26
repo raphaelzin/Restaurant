@@ -16,6 +16,9 @@
 	</script>
 
 	<% @dishes.each do |d| %>
+		<div class="left">
+		<%= image_tag d.pic.url(:medium), :class => 'productPic', :id => 'circular-big'%>
+		</div>
 		Name: <%= d.title %> 
 		<div class="right"><%= link_to "Edit", edit_category_dish_path(d.category,d) %> </div>
 		<br>

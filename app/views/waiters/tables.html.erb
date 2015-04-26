@@ -13,6 +13,9 @@
 	<% t.clients.each do |c| %>
 		<%= link_to c.name, table_client_path(t,c) %> 
 		(<%= number_with_precision(c.owe, :precision => 2) %>)
+		<% if c.checking_out %>
+			<span style="color:green">(<%= c.payment_method %>)</span>
+		<%end%>
 		<%= link_to 'Delete',
               table_client_path(t,c),
               method: :delete, data: { confirm: 'Do you really want to delete this client?' } %>
