@@ -62,10 +62,20 @@ class TablesController < ApplicationController
 
 	def finish_table
 		@table = Table.find(params[:table_id])
-	  	@table.clients = []
-	  	@table.requested = false
-	  	@table.save
-	  	redirect_to waiters_tables_path
+		@order = Order.new
+		@order.total = @table.owe
+
+		@table.clients.each do |c|
+			c.dishes.each do |d|
+				@order.dishes << d
+			end
+		end
+		@order.save
+
+	  @table.clients = []
+	  @table.requested = false
+	  @table.save
+	  redirect_to waiters_tables_path
 	end	
 
 	def destroy

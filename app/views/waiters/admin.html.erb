@@ -9,4 +9,20 @@
 	<br><br>
 	<%= link_to "Manage Dishes", waiters_manage_dishes_path %>
 	<br><br>
+	<h3>Stats</h3>
+	<!-- invoice.invoice_items.all.sum(&:total) -->
+	<h5>Sells during week</h5>
+	<%= column_chart Order.group_by_day_of_week(:created_at).sum(:total) %>
+	
+	<h5>Sells During day</h5>
+	<%= column_chart Order.group_by_hour_of_day(:created_at, format: "%l %P").sum((:total)) %>
+
+	<% total = 0 %>
+	<% @orders.each do |o| %>
+		<%= o.created_at.strftime("%H:%M - %d %b. %Y")  %>:
+		(<%=o.total%>)
+		<% total += o.total %>
+		<br>
+	<%end%>
+	<%= "Total: #{total}" %>
 </div>

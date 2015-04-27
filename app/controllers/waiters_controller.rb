@@ -105,6 +105,7 @@ class WaitersController < ApplicationController
     if !is_admin(current_waiter)
       redirect_to root_path
     end
+    @orders = Order.all
   end
 
    def waiter_params

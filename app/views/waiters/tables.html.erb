@@ -6,19 +6,22 @@
 		$(".table<%=t.id%>").css("background-color","#F00");
 	</script>
 	<% end %>
+	<h6>
 	-(<%=t.clients.count%>) <%= link_to "Table #{t.number}", table_path(t) %> 
 	<%=  %> (<%= t.code %>) <div id="table<%=t.number%>" class="toggle-hide">Show</div>-
-	<br><br>
+	</h6>
+	<br>
 	<div id="table<%=t.number%>-content" class="tables-content"> 
 	<% t.clients.each do |c| %>
 		<%= link_to c.name, table_client_path(t,c) %> 
 		(<%= number_with_precision(c.owe, :precision => 2) %>)
-		<% if c.checking_out %>
-			<span style="color:green">(<%= c.payment_method %>)</span>
-		<%end%>
+		
 		<%= link_to 'Delete',
               table_client_path(t,c),
-              method: :delete, data: { confirm: 'Do you really want to delete this client?' } %>
+              method: :delete, data: { confirm: 'Do you really want to delete this client?' }, :class => 'right' %>
+        <% if c.checking_out %>
+			<span style="color:green" class="right">(<%= c.payment_method %>)</span>
+		<%end%>
 		<br>
 		<div style="padding-left:15px;">
 		<% c.dishes.each do |d| %>
