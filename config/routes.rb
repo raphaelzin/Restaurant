@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 		post :toggle_request, on: :member
 	  resources :clients do
 	  	post :toggle_check_out, on: :member
-	    post :select_client, on: :member
+	    post :toggle_done, on: :member
 	    post :add_dish, on: :member
 	  end
 	end

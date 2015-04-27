@@ -14,15 +14,18 @@
 	<h5>Sells during week</h5>
 	<%= column_chart Order.group_by_day_of_week(:created_at).sum(:total) %>
 	
+
+
 	<h5>Sells During day</h5>
-	<%= column_chart Order.group_by_hour_of_day(:created_at, format: "%l %P").sum((:total)) %>
+	<%= column_chart Order.group_by_hour_of_day(:created_at, format: "%l %P").sum((:total))%>
 
 	<% total = 0 %>
 	<% @orders.each do |o| %>
 		<%= o.created_at.strftime("%H:%M - %d %b. %Y")  %>:
-		(<%=o.total%>)
+		(<%= number_with_precision(o.total, :precision =>2)%>)
 		<% total += o.total %>
 		<br>
 	<%end%>
-	<%= "Total: #{total}" %>
+	<%= "Total: #{number_with_precision(total, :precision =>2) 
+}" %>
 </div>

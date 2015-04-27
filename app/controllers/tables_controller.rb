@@ -62,20 +62,31 @@ class TablesController < ApplicationController
 
 	def finish_table
 		@table = Table.find(params[:table_id])
+		done = true
+
 		@order = Order.new
 		@order.total = @table.owe
 
 		@table.clients.each do |c|
+			if !c.done
+				done = false
+			end
 			c.dishes.each do |d|
+
 				@order.dishes << d
 			end
 		end
-		@order.save
-
-	  @table.clients = []
-	  @table.requested = false
-	  @table.save
-	  redirect_to waiters_tables_path
+		if !done
+			flash[:error] = "All clients must be done before finish table"
+			redirect_to :back
+		else
+			@order.save
+		  @table.clients = []
+		  @table.requested = false
+		  @table.save
+		  redirect_to waiters_tables_path
+		end
+		
 	end	
 
 	def destroy

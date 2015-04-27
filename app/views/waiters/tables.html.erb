@@ -1,3 +1,17 @@
+	<% if flash[:success] %>
+	<div class="alert-success">
+		<%= flash[:success]%><br>
+	</div>
+	<%end%>
+	<% if flash[:error] %>
+		<div class="alert-error">
+		<%= flash[:error]%><br>
+	</div>
+	<%end%>
+	<script>
+		alertMessage();
+	</script>
+
 <% @tables.each do |t| %>
 <% if (t.waiter == current_waiter || current_waiter.admin ) %>
 <div id="tables" class="table<%=t.number%>">
@@ -16,30 +30,36 @@
 		<%= link_to c.name, table_client_path(t,c) %> 
 		(<%= number_with_precision(c.owe, :precision => 2) %>)
 		
-		<%= link_to 'Delete',
-              table_client_path(t,c),
-              method: :delete, data: { confirm: 'Do you really want to delete this client?' }, :class => 'right' %>
+		<%= link_to_if(!c.done, 'Done',
+              toggle_done_table_client_path(t,c),
+              method: :toggle_done, data: { confirm: 'Is this client done?' }, :class => 'right'){} %>
+        <%= link_to_if(c.done, 'Undone',
+              toggle_done_table_client_path(t,c),
+              method: :toggle_done, data: { confirm: 'Is this client not done?' }, :class => 'right'){}%>
+
         <% if c.checking_out %>
 			<span style="color:green" class="right">(<%= c.payment_method %>)</span>
 		<%end%>
 		<br>
-		<div style="padding-left:15px;">
-		<% c.dishes.each do |d| %>
-			<%= d.title %><br>
+		<% if !c.done %>
+			<div style="padding-left:15px;">
+			<% c.dishes.each do |d| %>
+				<%= d.title %><br>
+			<%end%>
+			</div>
 		<%end%>
-		</div>
 	<% end %>
 	<% if t.clients.count != 0 %>
 	<br>
 	Total: <%= number_with_precision(t.owe, :precision => 2) %>
-	<br><br>
-	<%= link_to "toggle requested", toggle_request_table_path(t,table_id: t, user: 1), method: :post %>
 	<br>
-	<%= link_to "Finish table", finish_table_table_path(t.waiter,table_id: t.id), method: :post%>
+	<%= link_to_if(t.requested, "toggle requested", toggle_request_table_path(t,table_id: t, user: 1), method: :post){}%>
+	<br>
+	<%= link_to "Finish table", finish_table_table_path(t.waiter,table_id: t.id), method: :post, data: { confirm: 'Do you really want to Finish this table?' }%>
 	<%else%>
 		Empty Table
 	<%end%>
 </div> <!-- TableX-content -->
-</div>
+</div> <!-- Tables --> 
 <%end%>
 <%end%>

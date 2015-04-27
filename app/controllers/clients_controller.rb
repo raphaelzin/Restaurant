@@ -51,7 +51,14 @@ class ClientsController < ApplicationController
     @client.payment_method = params[:payment_method]
     @client.checking_out = !@client.checking_out
     @client.save
+    redirect_to :back
+  end
 
+  def toggle_done
+    @client = Client.find(params[:id])
+    @client.checking_out = false
+    @client.done = !@client.done
+    @client.save
     redirect_to :back
   end
 
