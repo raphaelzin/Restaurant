@@ -17,8 +17,8 @@
 	<script>alertMessage()</script>
 
 	<h5>Welcome to<br> </h5>
-	<!-- <img src="http://upload.wikimedia.org/wikipedia/en/thumb/3/37/White_Spot_Logo.svg/1280px-White_Spot_Logo.svg.png" style="width:180px;"> -->
-	<img src="http://gotorickys.com/wp-content/themes/rickys-template/images/logo.png" style="width:180px;">
+	<img src="http://upload.wikimedia.org/wikipedia/en/thumb/3/37/White_Spot_Logo.svg/1280px-White_Spot_Logo.svg.png" style="width:180px;">
+	<!-- <img src="http://gotorickys.com/wp-content/themes/rickys-template/images/logo.png" style="width:180px;"> -->
 	<br><br>
 	<% if current_client.present? || current_table.present? %>
 		<h5><%= link_to 'Go to your table!', table_path(current_table) %></h5>
@@ -27,7 +27,7 @@
 	Enter the Table code:
 	
 	<%=form_tag(tables_redirect_to_table_path) do %>
-        <%=text_field_tag :code%>
+        <%=text_field_tag :code %>
         <%=submit_tag 'Go to table', :class => 'button'%>
 	<%end%>
 	

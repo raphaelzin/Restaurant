@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 	get 'waiters/manage_categories'
 	get 'waiters/manage_dishes'
 
+	get 'extras/developer'
 	get 'waiters/tables'
 	get 'waiters/login'
 	get 'waiters/admin'
@@ -21,11 +22,17 @@ Rails.application.routes.draw do
 	    post :add_dish, on: :member
 	  end
 	end
-
+resources :extras
 resources :waiters
 resources :sessions
 resources :categories do
   resources :dishes
+end
+
+resources :orders do
+  collection do
+    get 'test'
+  end
 end
 
 root 'tables#welcome'

@@ -27,6 +27,17 @@ function alertMessage()
   	$( ".alert-success" ).fadeIn(500).delay( 3000 ).fadeOut( 500 );
 }
 $(document).ready(function() {
+
+  $.ajax({
+    type:"GET",
+    url:"orders/test",
+    dataType:"json",
+    data: {some_parameter: 'hello'},
+    success:function(result){
+      alert(result);
+    }
+  })
+
   var fontsize = 100;
   $(".tables-content").hide(0);
 	$("."+"products").hide(200);
@@ -53,3 +64,58 @@ $(document).ready(function() {
       $("#container,#product").css({'font-size':fontsize});
     });
 });
+
+jQuery(function() {
+  $.ajax({
+    type:"GET",
+    url:"orders/test",
+    dataType:"json",
+    data: {some_parameter: 'hello'},
+    success:function(result)
+    {
+      alert(result);
+    }
+  })
+});
+/*
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Day','Sold', 'Number of orders                .'],
+          ['Monday', 0,0],
+          ['Tuesday', 64.13,13],
+          ['Wednesday', 4.85,1],
+          ['Thusday', 42.8,12],
+          ['Friday', 3.5,2],
+          ['Satursday', 0,0],
+          ['Sunday', 0,0]
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Sales during week',
+            subtitle: '',
+          },
+          bars: 'vertical',
+          vAxis: {format: 'decimal'},
+          height: 400,
+          width: 900,
+          colors: ['#1baf77','#d95f02']
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('chart_div'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+
+        var btns = document.getElementById('btn-group');
+
+        btns.onclick = function (e) {
+
+          if (e.target.tagName === 'BUTTON') {
+            options.vAxis.format = e.target.id === 'none' ? '' : e.target.id;
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+          }
+        }
+      }
+
+*/

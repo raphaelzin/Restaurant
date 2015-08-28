@@ -106,6 +106,13 @@ class WaitersController < ApplicationController
       redirect_to root_path
     end
     @orders = Order.all
+    @dishes = []
+
+    @orders.each do |o|
+      o.dishes do |d|
+        @dishes << d
+      end
+    end
   end
 
    def waiter_params

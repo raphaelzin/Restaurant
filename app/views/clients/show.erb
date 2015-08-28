@@ -24,15 +24,15 @@
 	
 	<h5><%=link_to "Call waiter", toggle_request_table_path(@client.table,table_id: @client.table), user: 2, method: :post %></h5>
 	<%end%>
-
+	<br>
 	<div id="order">
 		<h5>You've ordered:</h5>
 		<hr>
 		<% if @client.dishes.empty? %>
-			<h5>Aren't you hungry?</h5>
+			<h6>Aren't you hungry?</h6>
 		<%end%>
 		<% @client.dishes.each do |d| %>
-			<div class="product">
+			<div class="product" style="padding:0px;margin:0px;">
 				<div class="left"><%= d.title %></div>
 
 				<div class="right">

@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Restaurant</title>
+  <script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['bar']}]}"></script>
   <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body >
 
 <% if current_waiter.present? %>
 <div id="toolbar">
@@ -26,6 +27,9 @@
 <% if !current_waiter.present? && current_client.present?%>
 <div id="bottom_bar" >
   <%=  social_share_button_tag("Having a good time :) ", :url => "https://www.whitespot.ca/menu/bc",:popup => 'true')%>
+
+    <div class="meet_me"><%= link_to 'Who is the Developer?', extras_developer_path%></div>
+
   <div id="accessibility">
     <div class="bigger" style="display:inline;font-size:28px;margin-right:5px;">+A</div>
     <div class="smaller" style="display:inline;font-size:22px;">-A</div>

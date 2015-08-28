@@ -1,4 +1,4 @@
-<div id="container">
+<div id="container" onload="drawChart();">
 	<h1>Administrator's Page</h1>
 	<br>
 	<%= link_to "Manage Employees", waiters_manage_employees_path%>
@@ -10,14 +10,18 @@
 	<%= link_to "Manage Dishes", waiters_manage_dishes_path %>
 	<br><br>
 	<h3>Stats</h3>
-	<!-- invoice.invoice_items.all.sum(&:total) -->
-	<h5>Sells during week</h5>
-	<%= column_chart Order.group_by_day_of_week(:created_at).sum(:total) %>
-	
 
+	<% days = Order.group_by_day_of_week(:created_at).sum(:total) %>
+	<% nOrders = Order.group_by_day_of_week(:created_at).count %>
+	<% hours = Order.group_by_hour_of_day(:created_at, format: "%l %P").sum((:total)) %>
+	<% keys = hours.keys %>
+	<% values = hours.values %>
 
-	<h5>Sells During day</h5>
-	<%= column_chart Order.group_by_hour_of_day(:created_at, format: "%l %P").sum((:total))%>
+	<div id="chart_div"></div>
+	<div id="chart_during_day"></div>
+
+	<% Order.group_by_hour_of_day(:created_at, format: "%l %P").sum((:total)) %>
+
 
 	<% total = 0 %>
 	<% @orders.each do |o| %>
@@ -28,4 +32,70 @@
 	<%end%>
 	<%= "Total: #{number_with_precision(total, :precision =>2) 
 }" %>
+
+
 </div>
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+google.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Day','Sold', 'Number of orders'],
+          ['Monday', <%= days[0] %>,<%= nOrders[0] %>],
+          ['Tuesday', <%= days[1] %>,<%= nOrders[1] %>],
+          ['Wednesday', <%= days[2] %>,<%= nOrders[2] %>],
+          ['Thusday', <%= days[3] %>,<%= nOrders[3] %>],
+          ['Friday', <%= days[4] %>,<%= nOrders[4] %>],
+          ['Satursday', <%= days[5] %>,<%= nOrders[5] %>],
+          ['Sunday', <%= days[6] %>,<%= nOrders[6] %>]
+        ]);
+		
+		var data2 = google.visualization.arrayToDataTable([
+        ['Hour', 'Value Sold'],
+        <% (0..keys.count-1).each do |i| %>
+        	<%= "[\"#{keys[i]}\", #{values[i]}]".html_safe %><%= if i != keys.count-1 then "," else "" end %>
+        <% end %>
+
+      	]);
+
+        var options = {
+          chart: {
+            title: 'Sales during week',
+            subtitle: 'Value sold and orders for each day of the week',
+          },
+          bars: 'vertical',
+          vAxis: {format: 'decimal'},
+          height: 400,
+          colors: ['#1baf77','#d95f02']
+        };
+
+        var options2 = {
+          chart: {
+            title: 'Sales during the day',
+            subtitle: 'Value sold for each hour of the day',
+          },
+          bars: 'vertical',
+          vAxis: {format: 'decimal'},
+          height: 400,
+          colors: ['#1baf77','#d95f02']
+        };
+
+        var chart2 = new google.charts.Bar(document.getElementById('chart_during_day'));
+		chart2.draw(data2, google.charts.Bar.convertOptions(options));
+
+        var chart = new google.charts.Bar(document.getElementById('chart_div'));
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+
+        var btns = document.getElementById('btn-group');
+        btns.onclick = function (e) {
+
+          if (e.target.tagName === 'BUTTON') {
+            options.vAxis.format = e.target.id === 'none' ? '' : e.target.id;
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+          }
+        }
+      }
+</script>

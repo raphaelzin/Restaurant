@@ -9,12 +9,13 @@
 	<h6>(<%= c.description %>)</h6><br>
 	<div id="<%= c.name %>-products" class="products">
 		<% c.dishes.each do |d| %>
-			<div class="product">
+			<div class="product" >
 				<div class="left">
-					<%= image_tag d.pic.url(:medium), :class => 'productPic', :id => 'circular'%>
+					<%= image_tag d.pic.url(:medium), :class => 'productPic', :id => 'circular-big'%>
 						<%= link_to d.title, category_dish_path(c,d) %>
 				</div>
 				<div class="right">
+					<br id="circular-big">
 					$<%=d.price%> - 
 						<%= link_to "Order", add_dish_table_client_path(current_table, current_client, dish_id: d.id), 
 						method: :post, data: { confirm: 'Confirm your order' }

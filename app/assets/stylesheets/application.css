@@ -4,10 +4,62 @@
  *= require skeleton
  */
 
- html, body {
+ html, body 
+ {
+ 	font-weight:bold;
   width: auto !important;
   overflow-x: hidden !important;
 }
+
+.blur
+{
+	-webkit-filter: blur(15px);
+  -moz-filter: blur(15px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+	width: auto;
+	height: 150px;
+}
+
+#blur
+{
+	-webkit-filter: blur(15px);
+  -moz-filter: blur(15px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+	width: auto;
+	height: 150px;
+}
+
+.center
+{
+	width: 240px;
+	height: 240px;
+	vertical-align:middle;
+	border-radius: 120px;
+	-webkit-border-radius: 120px;
+	-moz-border-radius: 120px;
+	border: solid black 1px;
+	background: no-repeat;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#info
+{
+	display: inline-block;
+}
+
+.meet_me
+{
+	display: inline;
+	position: relative;
+  bottom: 12px;
+}
+
 #circular {
 	width: 40px;
 	height: 40px;
@@ -26,6 +78,18 @@
 	-webkit-border-radius: 40px;
 	-moz-border-radius: 40px;
 	margin-right: 10px;
+	background: no-repeat;
+}
+
+#circular-xlarge {
+	width: 240px;
+	height: 240px;
+	vertical-align:middle;
+	border-radius: 120px;
+	-webkit-border-radius: 120px;
+	-moz-border-radius: 120px;
+
+	/*border: solid black 1px;*/
 	background: no-repeat;
 }
 
@@ -64,11 +128,18 @@
 	cursor: pointer;
 	display: inline;
 	float:right;
-	margin-right: 10px;
-	font-weight: normal;
+	margin-right: 10px;	
 }
-ul
+
+#chart_div, #chart_during_day
 {
+	width: 100%;
+}
+
+li
+{
+	color: #DC965A;
+	padding: 17px;
 	display: inline;
 	width: 50%;
 	height: 100px;
@@ -80,12 +151,12 @@ form
 
 body
 {
-	/*background-color:#875D9C;*/
-	background-color: black;
-	background-image: url('bg_bricks2.jpg');
+	background-color:#378ED2;
+	/*background-color: black;*/
+	/*background-image: url('bg_bricks2.jpg');*/
 	background-repeat: no-repeat;
 	font-family: 'Raleway', sans-serif;
-	font-weight:bold;
+	
 	overflow: scroll;
 	color:#000;
 }
@@ -171,6 +242,7 @@ body
 {
 	padding-right: 10px;
 	float:right;
+	vertical-align: middle;
 }
 a
 {
@@ -195,11 +267,12 @@ a:visited
 
 .product
 {
-	margin: 25px 0px 25px 0px;
+	margin: 10px 0px 20px 0px;
+	padding: 10px 0px 40px 0px;
 }
 .products
 {
-	width: 60%;
+	width: 80%;
 	margin: 0px auto 0px auto;
 	border-radius: 5px;
 	border: solid black 1px;
@@ -213,6 +286,7 @@ h1,h5,h3,h6
 	text-align: center;
 	padding: 0;
 	margin:  0;
+	font-weight:bold;
 }
 
 .toggle-hide
@@ -368,6 +442,7 @@ hr
 	}
 	.product
 	{
+		padding: 0px 10px 0px 10px;
 		margin-left: 1%;
 	}
 	#clientList
