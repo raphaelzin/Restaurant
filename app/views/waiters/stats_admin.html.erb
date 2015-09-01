@@ -1,15 +1,5 @@
-<div id="container" onload="drawChart();">
-	<h1>Administrator's Page</h1>
-	<br>
-	<%= link_to "Manage Employees", waiters_manage_employees_path%>
-	<br><br>
-	<%= link_to "Manage Tables", waiters_manage_tables_path%>
-	<br><br>
-	<%= link_to "Manage Categories", waiters_manage_categories_path %>
-	<br><br>
-	<%= link_to "Manage Dishes", waiters_manage_dishes_path %>
-	<br><br>
-	<h3>Stats</h3>
+<div id="container">
+	<h3>Statistics</h3>
 
 	<% days = Order.group_by_day_of_week(:created_at).sum(:total) %>
 	<% nOrders = Order.group_by_day_of_week(:created_at).count %>
@@ -32,10 +22,7 @@
 	<%end%>
 	<%= "Total: #{number_with_precision(total, :precision =>2) 
 }" %>
-
-
 </div>
-
 
 
 

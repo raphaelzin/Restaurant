@@ -2,13 +2,44 @@
  *= require social-share-button
  *= require normalize
  *= require skeleton
+ *= require sweet-alert
  */
+
+@import "waiters.scss";
+
+.sweet-alert button {
+	padding: 0px 32px;
+}
+.sweet-alert
+{
+	font-family: 'Raleway', sans-serif;
+}
+
+#lean_overlay {
+    position: fixed;
+    z-index:100;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    background: #000;
+    display: none;
+}
 
  html, body 
  {
  	font-weight:bold;
   width: auto !important;
   overflow-x: hidden !important;
+}
+
+#admin_options
+{
+
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
 }
 
 .blur
@@ -151,10 +182,11 @@ form
 
 body
 {
-	background-color:#378ED2;
+	/*background-color:#378ED2;*/
+
 	/*background-color: black;*/
-	/*background-image: url('bg_bricks2.jpg');*/
-	background-repeat: no-repeat;
+	background-image: url('bg.png');
+	/*background-repeat: no-repeat;*/
 	font-family: 'Raleway', sans-serif;
 	
 	overflow: scroll;
@@ -320,7 +352,7 @@ h1,h5,h3,h6
 
 
 
-
+/*
 button:hover,.button:hover {
   background: #96c3eb;
   background-image: -webkit-linear-gradient(top, #96c3eb, #3498db);
@@ -331,10 +363,11 @@ button:hover,.button:hover {
   text-decoration: none;
 
 }
-
+*/
 a, a:visited{
 	color:#337ab7;
 }
+
 hr
 {
 	margin-top: 10px;

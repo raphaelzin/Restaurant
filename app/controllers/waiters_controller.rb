@@ -8,7 +8,7 @@ class WaitersController < ApplicationController
     
     if @waiter.save
       flash[:success] = 'Employer added'
-      redirect_to waiters_manage_employees_path
+      # redirect_to waiters_manage_employees_path
     end
   end
 
@@ -29,7 +29,10 @@ class WaitersController < ApplicationController
   		redirect_to root_path
   	end
     session[:client_id] = nil
-  	@tables = Table.all.order("number ASC")
+
+    @tables = Table.all.order("number ASC")
+
+
   end
 
   def login
@@ -51,7 +54,12 @@ class WaitersController < ApplicationController
     end
     @waiter = Waiter.new
     if is_admin(current_waiter)
+
       @waiters = Waiter.all.order("id ASC")
+      respond_to do |format|
+        format.html
+        format.json
+      end
     else  
       redirect_to root_path
     end
@@ -102,6 +110,20 @@ class WaitersController < ApplicationController
   end
 
   def admin
+    if !is_admin(current_waiter)
+      redirect_to root_path
+    end
+    @orders = Order.all
+    @dishes = []
+
+    @orders.each do |o|
+      o.dishes do |d|
+        @dishes << d
+      end
+    end
+  end
+
+  def stats_admin
     if !is_admin(current_waiter)
       redirect_to root_path
     end

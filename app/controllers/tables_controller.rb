@@ -1,8 +1,11 @@
 class TablesController < ApplicationController
 	around_filter :catch_not_found
+	respond_to :html, :js
 
 	def welcome
 	end
+
+	
 
 	def create
 		@table = Table.new(table_params)

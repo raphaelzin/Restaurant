@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+	get 'waiters/stats_admin'
   	get 'waiters/manage_tables'
 	get 'waiters/manage_employees'
 	get 'waiters/manage_categories'

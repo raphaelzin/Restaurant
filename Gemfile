@@ -34,6 +34,8 @@ gem 'money-rails'
 gem "chartkick"
 gem 'groupdate'
 gem 'googlecharts', '~> 1.6.10'
+gem 'sweet-alert'
+gem 'sweet-alert-confirm'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

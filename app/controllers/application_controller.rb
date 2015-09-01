@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_client, :current_table, :sign_in_waiter, :current_waiter, :is_admin
 
   def current_client
-    if session.key?(:client_id)
+    @current_client ||= if session.key?(:client_id)
       Client.find(session[:client_id])
     else
       nil
